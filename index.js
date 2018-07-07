@@ -15,6 +15,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 wss.on("connection", function(ws) {
+	var data = '';
   	var id = setInterval(function() {
 		ws.send(JSON.stringify('holi'), function() {  })    	
 	}, 1000)
@@ -23,5 +24,27 @@ wss.on("connection", function(ws) {
   ws.on("close", function() {
     console.log("websocket connection close")
     clearInterval(id)
-  })
+  }).on("data",function(mens){
+  		data+=mens;
+  }).on('end', function () {
+	    // Al terminar de recibir datos los procesamos
+	    var response = null;
+
+	    // Nos aseguramos de que sea tipo JSON antes de convertirlo.
+	    if (contentType.indexOf('application/json') != -1) {
+	        response = JSON.parse(data);
+	    }
+
+	    // Invocamos el next con los datos de respuesta
+	    next(response, null);
+	})
+	.on('error', function(err) {
+	    // Si hay errores los sacamos por consola
+	    console.error('Error al procesar el mensaje: ' + err)
+	})
+	.on('uncaughtException', function (err) {
+	    // Si hay alguna excepción no capturada la sacamos por consola
+	    console.error(err);
+	});
+
 })
