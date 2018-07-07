@@ -16,9 +16,7 @@ console.log("websocket server created")
 
 wss.on("connection", function(ws) {
 	var data = '';
-  	var id = setInterval(function() {
-		ws.send(JSON.stringify('holi'), function() {  })    	
-	}, 1000)
+  	
   console.log("websocket connection open")
 
   ws.on("close", function() {
@@ -26,6 +24,7 @@ wss.on("connection", function(ws) {
     clearInterval(id)
   }).on("data",function(mens){
   		data+=mens;
+  		var id = ws.send(JSON.stringify(data), function() {  });
   }).on('end', function () {
 	    // Al terminar de recibir datos los procesamos
 	    var response = null;
