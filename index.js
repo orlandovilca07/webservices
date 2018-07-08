@@ -3,7 +3,7 @@ var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
 var app = express()
-var port = process.env.PORT || 7016
+var port = process.env.PORT || 3000
 
 
 app.use(express.static(__dirname + "/"))
@@ -53,7 +53,7 @@ wss.on("connection", function(ws) {
 	            }
             });
 		});
-	}, 60000);
+	}, 5000);
   	console.log("websocket connection open")
 
   	ws.on("close", function() {
@@ -61,8 +61,8 @@ wss.on("connection", function(ws) {
     	clearInterval(id);
   	})
   	ws.on("message",function(mes){
-  		console.log(JSON.parse(mes)[0]);
-  		mongodb.MongoClient.connect(uri, function(err, client) {
+  		console.log(JSOgodb.MongoCliN.parse(mes)[0]);
+  		monent.connect(uri, function(err, client) {
 			if(err) {
 				console.log(err);
 			}else{
