@@ -3,10 +3,10 @@ var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
 var app = express()
-var port = process.env.PORT || 4000
+var port = process.env.PORT || 4001
 
 
-//app.use(express.static(__dirname + "/"))
+app.use(express.static(__dirname + "/"));
 
 var server = http.createServer(app)
 server.listen(port, () => {
