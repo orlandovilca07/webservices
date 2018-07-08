@@ -10,7 +10,7 @@ var port = process.env.PORT || 4000
 
 var server = http.createServer(app)
 server.listen(port, () => {
-  console.log('Listening on '+${port});
+  console.log(location.origin);
 });
 
 var wss = new WebSocketServer({server: server})
