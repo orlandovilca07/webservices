@@ -1,9 +1,9 @@
-var WebSocketServer = require("wss").Server
-var http = require("https")
+var WebSocketServer = require("ws").Server
+var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
 var app = express()
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 4000
 
 
 app.use(express.static(__dirname + "/"))
