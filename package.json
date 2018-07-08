@@ -1,14 +1,22 @@
 {
   "name": "webservices",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orlandovilca07/webservices.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orlandovilca07/webservices/issues"
+  },
+  "homepage": "https://github.com/orlandovilca07/webservices#readme",
   "dependencies": {
     "bufferutil": "4.0.0",
     "express": "4.16.3",
