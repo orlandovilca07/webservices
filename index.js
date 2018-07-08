@@ -8,10 +8,8 @@ var port = process.env.PORT || 4001
 
 app.use(express.static(__dirname + "/"));
 
-var server = http.createServer(app)
-server.listen(port, () => {
-  console.log('hola');
-});
+const server = express()
+  .listen(PORT, () => console.log('Listening on ${ PORT }'));
 
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
