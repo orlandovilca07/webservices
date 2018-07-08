@@ -1,4 +1,4 @@
-var WebSocketServer = require("ws").Server
+var WebSocketServer = require("wss").Server
 var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
