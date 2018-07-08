@@ -2,7 +2,7 @@
   "name": "webservices",
   "version": "2.0.0",
   "engines":{
-    "node" : "6.2.0"
+    "node" : "8.11.3"
   },
   "description": "",
   "main": "index.js",
