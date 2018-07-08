@@ -10,7 +10,7 @@ app.use(express.static(__dirname + "/"));
 
 var server = http.createServer(app)
 server.listen(port, () => {
-  console.log(location.origin);
+  console.log(window.location);
 });
 
 var wss = new WebSocketServer({server: server})
