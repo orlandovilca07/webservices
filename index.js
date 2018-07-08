@@ -3,13 +3,13 @@ var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
 var app = express()
-var port = process.env.PORT || 4003
+var port = process.env.PORT || 4004
 
 
 app.use(express.static(__dirname + "/"));
 
 const server = express()
-  .listen(port, () => console.log('Listening on ${ port }'));
+  .listen(port, () => console.log('Listening on '));
 
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
