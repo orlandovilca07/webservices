@@ -25,7 +25,23 @@ var server = app.listen(port, function () {
 var wss = new WebSocketServer({server: server});
 console.log("websocket server created")
 wss.on("connection", function(ws) {
+	
+	const Firestore = require('@google-cloud/firestore');
+	const db = new Firestore({
+	  projectId: 'corded-racer-239721',
+	  keyFilename: '/keyfile.json',
+	});
+	db.collection('ConsumptionNow').doc('2001').get()
+	  .then((snapshot) => {
+	    snapshot.forEach((doc) => {
+	      console.log(doc.id, '=>', doc.data());
+	    });
+	  })
+	  .catch((err) => {
+	    console.log('Error getting documents', err);
+	  });
 	console.log("connection ...");
+	
 	ws.on('message', function incoming(message) {
         console.log('received: %s', message);
         //connectedUsers.push(message);
