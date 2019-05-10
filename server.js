@@ -1,4 +1,15 @@
-var WebSocketServer = require("ws").Server
+var express = require('express')
+var http = require('http')
+var app = express()
+
+app.get('/', (req, res) => {
+  res.status(200).send("Welcome to API REST")
+})
+
+http.createServer(app).listen(8001, () => {
+  console.log('Server started at http://localhost:8001');
+});
+/*var WebSocketServer = require("ws").Server
 var http = require("http")
 const mongodb = require('mongodb')
 var express = require("express")
@@ -6,16 +17,10 @@ var app = express()
 var port = process.env.PORT || 4005
 
 
-//app.use(express.static(__dirname + "/"));
+app.use(express.static(__dirname + "/"));
 
-app.get('/', (req, res) => {
-  res.status(200).send("Welcome to API REST")
-})
- 
-http.createServer(app).listen(8001, () => {
-  console.log('Server started at http://localhost:8001');
-});
-/*const server = express()
+
+const server = express()
 	.use((req,res)=>res.sendFile('localhost:8080'))//localhost
   .listen(port, () => console.log('Listening on '));
 
