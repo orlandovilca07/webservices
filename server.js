@@ -8,8 +8,15 @@ var port = process.env.PORT || 4005
 
 app.use(express.static(__dirname + "/"));
 
+const wss = new WebSocket.Server({ port: 8080 })
 
-const server = express()
+wss.on('connection', ws => {
+  ws.on('message', message => {
+    console.log(`Received message => ${message}`)
+  })
+  ws.send('ho!')
+})
+/*const server = express()
 	.use((req,res)=>res.sendFile('localhost:8080'))//localhost
   .listen(port, () => console.log('Listening on '));
 
@@ -94,4 +101,4 @@ wss.on("connection", function(ws) {
 			
 		});
   	})
-})
+})*/
