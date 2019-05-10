@@ -1,13 +1,34 @@
-var express = require('express')
+/*var express = require('express')
 var http = require('http')
 var app = express()
 
 app.get('/', (req, res) => {
-  res.status(200).send("Welcome to API REST")
+  res.status(200).send("Welcome to API REST")
 })
 
 http.createServer(app).listen(8001, () => {
-  console.log('Server started at http://localhost:8001');
+  console.log('Server started at http://localhost:8001');
+});*/
+var WebSocketServer = require("ws").Server
+var http = require("http")
+var express = require("express")
+var app = express()
+var port = process.env.PORT || 8080;
+app.use("/", router);
+app.use(express.static(__dirname + "/"));
+app.use(express.static('static'))
+var server = app.listen(port, function () {
+    console.log('node.js static server listening on port: ' + port)
+});
+var wss = new WebSocketServer({server: server});
+console.log("websocket server created")
+wss.on("connection", function(ws) {
+	console.log("connection ...");
+	ws.on('message', function incoming(message) {
+        console.log('received: %s', message);
+        //connectedUsers.push(message);
+    });
+	ws.send('message from server at: ' + new Date());
 });
 /*var WebSocketServer = require("ws").Server
 var http = require("http")
@@ -15,18 +36,12 @@ const mongodb = require('mongodb')
 var express = require("express")
 var app = express()
 var port = process.env.PORT || 4005
-
-
 app.use(express.static(__dirname + "/"));
-
-
 const server = express()
 	.use((req,res)=>res.sendFile('localhost:8080'))//localhost
   .listen(port, () => console.log('Listening on '));
-
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
-
 wss.on("connection", function(ws) {
 	let uri = 'mongodb://heroku_99dkk2x6:hp4p8uavuekgus0cpk5b5epdu@ds229771.mlab.com:29771/heroku_99dkk2x6';
 	
@@ -66,7 +81,6 @@ wss.on("connection", function(ws) {
 		});
 	}, 5000);
   	console.log("websocket connection open")
-
   	ws.on("close", function() {
     	console.log("websocket connection close");
     	clearInterval(id);
