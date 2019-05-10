@@ -17,7 +17,7 @@ var port = process.env.PORT || 8080;
 app.use(express.static(__dirname + "/"));
 app.use(express.static('static'));
 app.get('/', function(req, res) {
-    res.sendFile("HOLAA"));
+    res.json({ status: 'App is running!' });
 });
 var server = app.listen(port, function () {
     console.log('node.js static server listening on port: ' + port)
