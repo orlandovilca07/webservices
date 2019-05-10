@@ -14,7 +14,6 @@ var http = require("http")
 var express = require("express")
 var app = express()
 var port = process.env.PORT || 8080;
-app.use("/", router);
 app.use(express.static(__dirname + "/"));
 app.use(express.static('static'))
 var server = app.listen(port, function () {
