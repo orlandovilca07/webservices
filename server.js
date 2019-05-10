@@ -10,7 +10,7 @@ app.use(express.static(__dirname + "/"));
 
 
 const server = express()
-	.use((req,res)=>res.sendFile('localhost:8080'))
+	.use((req,res)=>res.sendFile('208.87.235.180:8080'))//localhost
   .listen(port, () => console.log('Listening on '));
 
 var wss = new WebSocketServer({server: server})
