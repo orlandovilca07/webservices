@@ -10,6 +10,7 @@ http.createServer(app).listen(8001, () => {
   console.log('Server started at http://localhost:8001');
 });*/
 var WebSocketServer = require("ws").Server
+var Firestore = require('@google-cloud/firestore');
 var http = require("http")
 var express = require("express")
 var app = express()
@@ -26,10 +27,9 @@ var wss = new WebSocketServer({server: server});
 console.log("websocket server created")
 wss.on("connection", function(ws) {
 	
-	const Firestore = require('@google-cloud/firestore');
 	const db = new Firestore({
 	  projectId: 'corded-racer-239721',
-	  keyFilename: '/keyfile.json',
+	  keyFilename: '/Tesis Electricidad-82be67ea28a5.json',
 	});
 	db.collection('ConsumptionNow').doc('2001').get()
 	  .then((snapshot) => {
