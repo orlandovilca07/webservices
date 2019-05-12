@@ -40,7 +40,8 @@ wss.on("connection", function(ws) {
 			PatternConsumption: consumo,
 			QuantityHouse: consumo+variacion
 		};
-		var setDoc = db.collection('Consumption').set(data);
+		var setDoc = db.collection('Consumption').add(data).then(ref=>{console.log('Nuevo Data')});
+		
 	}, 20000);
 	db.collection('ConsumptionNow').doc('2001').get()
 	  .then((doc) => {
