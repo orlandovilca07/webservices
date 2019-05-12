@@ -38,7 +38,7 @@ wss.on("connection", function(ws) {
 			DateConsumption: new Date(),
 			IdHouse: "2001",
 			PatternConsumption: consumo,
-			QuantityHouse: consumo+variacion;
+			QuantityHouse: consumo+variacion
 		};
 		var setDoc = db.collection('Consumption').set(data);
 	}, 20000);
