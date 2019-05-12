@@ -32,10 +32,12 @@ wss.on("connection", function(ws) {
 	  keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 	});
 	db.collection('ConsumptionNow').doc('2001').get()
-	  .then((snapshot) => {
-	    snapshot.forEach((doc) => {
-	      console.log(doc.id, '=>', doc.data());
-	    });
+	  .then((doc) => {
+	    if (!doc.exists) {
+	      console.log('No such document!');
+	    } else {
+	      console.log('Document data:', doc.data());
+	    }
 	  })
 	  .catch((err) => {
 	    console.log('Error getting documents', err);
