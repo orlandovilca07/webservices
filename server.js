@@ -23,13 +23,13 @@ app.get('/', function(req, res) {
 var server = app.listen(port, function () {
     console.log('node.js static server listening on port: ' + port)
 });
-var wss = new WebSocketServer({server: server});
-console.log("websocket server created");
+/*var wss = new WebSocketServer({server: server});
+console.log("websocket server created");*/
 const db = new Firestore({
   projectId: 'corded-racer-239721',
   keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 });
-/*var dataNueva = setInterval(function() {
+var dataNueva = setInterval(function() {
 	var variacion = (1|-1)*Math.floor(Math.random() * 5)
 	var consumo = Math.floor(Math.random() * 51);
 	var time = new Date();
@@ -46,8 +46,8 @@ const db = new Firestore({
 		QuantityConsumption: consumo
 	});
 
-}, 20000);*/
-wss.on("connection", function(ws) {
+}, 20000);
+/*wss.on("connection", function(ws) {
 	
 	const db = new Firestore({
 	  projectId: 'corded-racer-239721',
