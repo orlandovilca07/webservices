@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "corded-racer-239721",
+  "private_key_id": "82be67ea28a57622b7e27626b5b56f77b045122f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCwFbmh779w7DQ/\nkMvLxtznH5pKN6ho20bvrXjeKnZBj9VO7WeYBpkjlwi8MqJ87RZ+BfUunr/ZlC0v\nn8D3yw16cyf8rmZoSVBOOfCJal5kBSZeD2o4XrarRXTT9990XFMLyqKRCxgugyCw\nw+n5ftJWm/OKj0k4rsEIy00xfiWQa39qzUfMQR89waRwolW4B095ojAYGvdDbabw\nV1x5by9Yr26c8X5E5fwiHwP1lI5DUIgGUfC4KUMY2xcKjP/5cxCJOQG6aklMakgG\nru3832j1Y8PI/Yu4DAgOw6mlHsQTq7UmaflVQroEgCJX0fGubpu5k+dcgCo/nG+t\nRdz1qQ3hAgMBAAECggEADFWdQQNxCtk06L39FJtrxnHfhjLjZGL101y4soFRctK/\nO63kG5FcwVI3Xa2DVdJqyK2kqN0cbcKULrmXVBRAb7Mo2imiSUxXaH9lAs81aPa2\nYxDb3TJ/Q7yUDDQZDkbYV2Nco2HeUgXD8LXsihpQ5Bm9A9f5JlQReAr7r4uZWIYd\nFG3HezZITGcnutgV+Zyco5A8KXl7WkC6TWn8FEP8u8YWbhUhXwXwp/oVAw+Nb1aT\nWlgoYgYM80rEWVTxJcF7BhRWwodNTWSuqAjYTZ7c05UPBAPHJwTHGbfJDwiMjwxW\nhEBlRlQ9usdW3liKMEOR8mwkIbnD6pR0LgcxHoVRpQKBgQD4YN1CsjD16cWtENke\nMQ57n2iYdYHTURIjORBNtoWvuIyEm727OSwOWZfG/0jpyLDAVP26ws4c4DTueRvp\ncAmk4z9uN5N1eRTyEY4xVxPfrWSLKdEqmlcEN4CJagiS5sfQ1gjz9Amh3SqFAGwu\nb90/5WcNyfyopg3WTFiwG4ttxQKBgQC1fPWWYdvhvoZIQqU+vNlyNpsHI10pXuJg\nnksH//v4c8Wb6UakBLJSKehIWA+HYEnyuCVCLLSxvQkMcYdBaJLLxMrXOvSdccZI\nmpScOP1ZxetOz9bXbm4IykoYTvXtY2725HdMIdUCEeOjWoaCIvbIP71YnGAzFBCD\n91R4aiwdbQKBgHXEZ+TR3IkdGM9gZ7H7DKTtBokTXkU18WWmDubqHiUdWfMebS2y\nhAMh0+dU79t5fuUS52OALn5eiHpyDhv3NXtrDI5T56URji7gyAz4/sFV05BweW67\n03p6XoXJMtuEdUW91mzlTxPia+C4PJMgE0XSnbRaC2Rjp7fuZzbJOKkJAoGABvFH\nx7/olGMgaeU6wwKgYtEZ7xT4PFvn1wBXKHAvaFqtZYBv9lhDpgb6XsIXnfsd+Q34\nRubE5sOvc+1n2iWw7+CQTdlwgBFZH2/iXXOEpYl/rd0ff9A2n1l1qiZjG/igxwsI\nUT4+Er0ycw5EdPf3bsOZb6lTuMB8vT+Z2J1fIKUCgYAEcuxbYjsaxIaDLTyhGNEl\ncC2tlzrAQER9y5tozJ4A/NBRH0f8VAYgidw1t8wN5qsS/mzZjGZqOlyuAdQbGoz7\nldDanEYYAqsXW9PxBX/FZHgL+iCGESvItXFRR+rwqWbws2lEBpGx0YHq9v2z0uSS\n7yCFdgCl2f18Pcl+e7dP8g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tesis-electricidad@corded-racer-239721.iam.gserviceaccount.com",
+  "client_id": "109088756881607299747",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tesis-electricidad%40corded-racer-239721.iam.gserviceaccount.com"
+}
