@@ -34,13 +34,19 @@ wss.on("connection", function(ws) {
 	var dataNueva = setInterval(function() {
 		var variacion = (1|-1)*Math.floor(Math.random() * 5)
 		var consumo = Math.floor(Math.random() * 51);
+		var time = new Date();
 		var data = {
-			DateConsumption: new Date(),
+			DateConsumption: time,
 			IdHouse: "2001",
 			PatternConsumption: consumo,
 			QuantityHouse: consumo+variacion
 		};
 		var setDoc = db.collection('Consumption').add(data).then(ref=>{console.log('Nuevo Data')});
+		var consumoActual = db.collection('ConsumptionNow').doc('2001');
+		var update = consumoActual.update({
+			DateConsumption: time,
+			QuantityConsumption: consumo
+		});
 		
 	}, 20000);
 	db.collection('ConsumptionNow').doc('2001').get()
