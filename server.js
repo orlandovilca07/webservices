@@ -31,6 +31,17 @@ wss.on("connection", function(ws) {
 	  projectId: 'corded-racer-239721',
 	  keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 	});
+	var dataNueva = setInterval(function() {
+		var variacion = (1|-1)*Math.floor(Math.random() * 5)
+		var consumo = Math.floor(Math.random() * 51);
+		var data = {
+			DateConsumption: new Date(),
+			IdHouse: "2001",
+			PatternConsumption: consumo,
+			QuantityHouse: consumo+variacion;
+		};
+		var setDoc = db.collection('Consumption').set(data);
+	}, 20000);
 	db.collection('ConsumptionNow').doc('2001').get()
 	  .then((doc) => {
 	    if (!doc.exists) {
@@ -44,11 +55,15 @@ wss.on("connection", function(ws) {
 	    console.log('Error getting documents', err);
 	  });
 	console.log("connection ...");
-	
+
+	ws.on("close", function() {
+		console.log("websocket connection close");
+		clearInterval(dataNueva);
+  	});
 	ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
-        //connectedUsers.push(message);
-    });
+		console.log('received: %s', message);
+		//connectedUsers.push(message);
+	});
 	ws.send('message from server at: ' + new Date());
 });
 /*var WebSocketServer = require("ws").Server
