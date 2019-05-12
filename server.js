@@ -37,7 +37,7 @@ wss.on("connection", function(ws) {
 	      console.log('No such document!');
 	    } else {
 	      console.log('Document data:', doc.data());
-	      ws.send(JSON.stringify(doc), function() {});
+	      ws.send(JSON.stringify(doc.data()), function() {});
 	    }
 	  })
 	  .catch((err) => {
