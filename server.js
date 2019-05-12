@@ -29,7 +29,7 @@ wss.on("connection", function(ws) {
 	
 	const db = new Firestore({
 	  projectId: 'corded-racer-239721',
-	  keyFilename: '/Tesis Electricidad-82be67ea28a5.json',
+	  keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 	});
 	db.collection('ConsumptionNow').doc('2001').get()
 	  .then((snapshot) => {
