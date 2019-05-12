@@ -24,7 +24,29 @@ var server = app.listen(port, function () {
     console.log('node.js static server listening on port: ' + port)
 });
 var wss = new WebSocketServer({server: server});
-console.log("websocket server created")
+console.log("websocket server created");
+const db = new Firestore({
+  projectId: 'corded-racer-239721',
+  keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
+});
+var dataNueva = setInterval(function() {
+	var variacion = (1|-1)*Math.floor(Math.random() * 5)
+	var consumo = Math.floor(Math.random() * 51);
+	var time = new Date();
+	var data = {
+		DateConsumption: time,
+		IdHouse: "2001",
+		PatternConsumption: consumo,
+		QuantityHouse: consumo+variacion
+	};
+	var setDoc = db.collection('Consumption').add(data).then(ref=>{console.log('Nuevo Data')});
+	var consumoActual = db.collection('ConsumptionNow').doc('2001');
+	var update = consumoActual.update({
+		DateConsumption: time,
+		QuantityConsumption: consumo
+	});
+
+}, 20000);
 wss.on("connection", function(ws) {
 	
 	const db = new Firestore({
