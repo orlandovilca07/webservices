@@ -74,9 +74,9 @@ wss.on("connection", function(ws) {
 					dateAux = new Date(objAux.DateConsumption._seconds*1000);
 				    	if((dateAux.getMonth()+1)+'/'+dateAux.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
 				    		if(i==0){
-					    		fechaFin = String(dateAux.getDate()).padStart(2,'0')+String((dateAux.getMonth()+1)).padStart(2,'0')+'/'+dateAux.getFullYear();
+					    		fechaFin = String(dateAux.getDate()).padStart(2,'0')+'/'+String((dateAux.getMonth()+1)).padStart(2,'0')+'/'+dateAux.getFullYear();
 					    	}
-					    	aux += objAux.PatternConsumption - objAux.QuantityHouse;
+					    	aux = objAux.PatternConsumption - objAux.QuantityHouse;
 					      	if(aux>3){
 							consumoExtra+=aux;
 						}
