@@ -72,8 +72,6 @@ wss.on("connection", function(ws) {
 							consumoExtra+=aux;
 						}
 					      	i++;	
-				    	}else{
-				    		break;
 				    	}
 				    	
 				    });
