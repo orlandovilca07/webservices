@@ -50,7 +50,7 @@ wss.on("connection", function(ws) {
 		ws.send(JSON.stringify(obj),function(){});
 		if(obj.consulta=='consumoExtra'){
 			db.collection('Consumption')
-			.where('IdHouse','==', obj.IdHouse) 
+			.where('IdHouse','==', obj.idHouse) 
 			.orderBy('DateConsumption', 'desc')
 			.get()
 			.then(doc => {
