@@ -45,7 +45,7 @@ wss.on("connection", function(ws) {
 		var obj = JSON.parse(message);
 		console.log(obj);
 		if(obj.consulta=='consumoExtra'){
-			db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
+			db.collection('Consumption').where('IdHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
 			.then((doc) => {
 				if (doc.empty) {
 					console.log('No matching documents.');
