@@ -61,13 +61,13 @@ wss.on("connection", function(ws) {
 					};
 					ws.send(JSON.stringify(mensaje), function() {  });
 				}else{
-				    /*var hoy = new Date();
-					var consumoExtra = 0;
-					var aux;
-					var objAux;
-					var fechaInicio = '01/'+String(hoy.getMonth()+1).padStart(2,'0')+'/'+hoy.getFullYear();
-					var fechaFin;
-					var i=0;
+				    var hoy = new Date();
+				    var consumoExtra = 0;
+				    var aux;
+				    var objAux;
+				    var fechaInicio = '01/'+String(hoy.getMonth()+1).padStart(2,'0')+'/'+hoy.getFullYear();
+				    var fechaFin;
+				    var i=0;
 				    doc.forEach(data => {
 				    	objAux = JSON.parse(data.data());
 				    	if((objAux.DateConsumption.getMonth()+1)+'/'+objAux.DateConsumption.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
@@ -82,13 +82,12 @@ wss.on("connection", function(ws) {
 				    	}
 				    	
 				    });
-				    console.log('Hay Data');
 				    var mensaje = {
-				    	message : 'hay data'/*consumoExtra,
+				    	message : consumoExtra,
 				    	dateStart : fechaInicio,
 				    	dateEnd : fechaFin
 				    };
-				    ws.send(JSON.stringify(mensaje),function(){});*/
+				    ws.send(JSON.stringify(mensaje),function(){});
 				}
 			})
 			.catch(err => {
