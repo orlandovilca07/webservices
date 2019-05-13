@@ -70,6 +70,8 @@ wss.on("connection", function(ws) {
 				    var i=0;
 				    doc.forEach(data => {
 				    	objAux = data.data();
+					console.log(objAux);
+					console.log(typeof objAux.DateConsumption);
 				    	if((objAux.DateConsumption.getMonth()+1)+'/'+objAux.DateConsumption.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
 				    		if(i==0){
 					    		fechaFin = String(objAux.DateConsumption.getDate()).padStart(2,'0')+String((objAux.DateConsumption.getMonth()+1)).padStart(2,'0')+'/'+objAux.DateConsumption.getFullYear();
