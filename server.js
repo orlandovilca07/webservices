@@ -40,10 +40,11 @@ var wss = new WebSocketServer({server: server});
 console.log("websocket server created");
 
 wss.on("connection", function(ws) {
-	console.log("connection ...");
+	console.log("connection ...")
 	ws.on('message', function(message) {
 		var obj = JSON.parse(message);
-		switch(obj.consulta){
+		console.log(obj);
+		/*switch(obj.consulta){
 			case 'consumoExtra':{
 				db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
 				.then((doc) => {
@@ -87,11 +88,11 @@ wss.on("connection", function(ws) {
 				})
 				break;
 			}
-		}
-	});
+		}*/
+	})
 	ws.on("close", function() {
 		console.log("websocket connection close");
-  	});
+  	})
 });
 /*wss.on("connection", function(ws) {
 	
