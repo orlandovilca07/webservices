@@ -71,7 +71,7 @@ wss.on("connection", function(ws) {
 				    doc.forEach(data => {
 				    	objAux = data.data();
 					console.log(objAux);
-					console.log(typeof objAux.DateConsumption);
+					console.log(new Date(objAux.DateConsumption._seconds*1000));
 				    	if((objAux.DateConsumption.getMonth()+1)+'/'+objAux.DateConsumption.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
 				    		if(i==0){
 					    		fechaFin = String(objAux.DateConsumption.getDate()).padStart(2,'0')+String((objAux.DateConsumption.getMonth()+1)).padStart(2,'0')+'/'+objAux.DateConsumption.getFullYear();
