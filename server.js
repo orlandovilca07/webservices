@@ -70,7 +70,9 @@ wss.on("connection", function(ws) {
 					    		fechaFin = String(objAux.DateConsumption.getDate()).padStart(2,'0')+String((objAux.DateConsumption.getMonth()+1)).padStart(2,'0')+'/'+objAux.DateConsumption.getFullYear();
 					    	}
 					    	aux += objAux.PatternConsumption - objAux.QuantityHouse;
-					      	(aux>3)?consumoExtra+=aux;
+					      	if(aux>3){
+							consumoExtra+=aux;
+						}
 					      	i++;	
 				    	}else{
 				    		break;
