@@ -44,18 +44,16 @@ wss.on("connection", function(ws) {
 	ws.on('message', function(message) {
 		var obj = JSON.parse(message);
 		console.log(obj);
-		switch(obj.consulta){
-			case 'consumoExtra':{
-				db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
-				.then((doc) => {
-					if (doc.empty) {
-				      	console.log('No matching documents.');
-				      	var mensaje = {
-				      		message : 'no data'
-				      	};
-				      	ws.send(JSON.stringify(mensaje), function() {  });
-				    	break;
-				    }
+		if(obj.consulta=='consumoExtra'){
+			db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
+			.then((doc) => {
+				if (doc.empty) {
+					console.log('No matching documents.');
+					var mensaje = {
+						message : 'no data'
+					};
+					ws.send(JSON.stringify(mensaje), function() {  });
+				}else{
 				    var hoy = new Date();
 					var consumoExtra = 0;
 					var aux;
@@ -85,11 +83,10 @@ wss.on("connection", function(ws) {
 				    	dateEnd : fechaFin
 				    };
 				    ws.send(JSON.stringify(mensaje),function(){});
-				}).catch((err) => {
-					console.log('Error obtener data de :'+obj.idHouse)
-				})
-				break;
-			}
+				}
+			}).catch((err) => {
+				console.log('Error obtener data de :'+obj.idHouse)
+			})
 		}
 	})
 	ws.on("close", function() {
