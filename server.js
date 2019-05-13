@@ -1,14 +1,3 @@
-/*var express = require('express')
-var http = require('http')
-var app = express()
-
-app.get('/', (req, res) => {
-  res.status(200).send("Welcome to API REST")
-})
-
-http.createServer(app).listen(8001, () => {
-  console.log('Server started at http://localhost:8001');
-});*/
 var WebSocketServer = require("ws").Server
 var Firestore = require('@google-cloud/firestore');
 var http = require("http")
@@ -23,13 +12,12 @@ app.get('/', function(req, res) {
 var server = app.listen(port, function () {
     console.log('node.js static server listening on port: ' + port)
 });
-/*var wss = new WebSocketServer({server: server});
-console.log("websocket server created");*/
+
 const db = new Firestore({
   projectId: 'corded-racer-239721',
   keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 });
-/*var dataNueva = setInterval(function() {
+var dataNueva = setInterval(function() {
 	var variacion = (1|-1)*Math.floor(Math.random() * 5)
 	var consumo = Math.floor(Math.random() * 51);
 	var time = new Date();
@@ -46,7 +34,65 @@ const db = new Firestore({
 		QuantityConsumption: consumo
 	});
 
-}, 20000);*/
+}, 60000);
+
+var wss = new WebSocketServer({server: server});
+console.log("websocket server created");
+
+wss.on("connection", function(ws) {
+	console.log("connection ...");
+	ws.on('message', function incoming(message) {
+		var obj = JSON.parse(message);
+		switch(obj.consulta){
+			case 'consumoExtra':{
+				db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
+				.then((doc) => {
+					if (doc.empty) {
+				      	console.log('No matching documents.');
+				      	var mensaje = {
+				      		message : 'no data'
+				      	};
+				      	ws.send(JSON.stringify(mensaje), function() {  });
+				    	break;
+				    }
+				    var hoy = new Date();
+					var consumoExtra = 0;
+					var aux;
+					var objAux;
+					var fechaInicio = '01/'+String(hoy.getMonth()+1).padStart(2,'0')+'/'+hoy.getFullYear();
+					var fechaFin;
+					var i=0;
+				    doc.forEach(data => {
+				    	objAux = JSON.parse(data.data());
+				    	if((objAux.DateConsumption.getMonth()+1)+'/'+objAux.DateConsumption.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
+				    		if(i==0){
+					    		fechaFin = String(objAux.DateConsumption.getDate()).padStart(2,'0')+String((objAux.DateConsumption.getMonth()+1)).padStart(2,'0')+'/'+objAux.DateConsumption.getFullYear();
+					    	}
+					    	aux += objAux.PatternConsumption - objAux.QuantityHouse;
+					      	(aux>3)?consumoExtra+=aux;
+					      	i++;	
+				    	}else{
+				    		break;
+				    	}
+				    	
+				    });
+				    var mensaje = {
+				    	message : consumoExtra,
+				    	dateStart : fechaInicio,
+				    	dateEnd : fechaFin
+				    };
+				    ws.send(JSON.stringify(mensaje),function(){});
+				}).catch((err) => {
+					console.log('Error obtener data de :'+obj.idHouse)
+				})
+				break;
+			}
+		}
+	});
+	ws.on("close", function() {
+		console.log("websocket connection close");
+  	});
+});
 /*wss.on("connection", function(ws) {
 	
 	const db = new Firestore({
