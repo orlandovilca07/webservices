@@ -41,11 +41,15 @@ console.log("websocket server created");
 
 wss.on("connection", function(ws) {
 	console.log("connection ...")
+	ws.on("close", function() {
+		console.log("websocket connection close");
+  	})
 	ws.on('message', function(message) {
 		var obj = JSON.parse(message);
 		console.log(obj);
+		ws.send(JSON.stringify(obj),function(){});
 		if(obj.consulta=='consumoExtra'){
-			db.collection('Consumption').where('IdHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
+			/*db.collection('Consumption').where('IdHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
 			.then((doc) => {
 				if (doc.empty) {
 					console.log('No matching documents.');
@@ -84,12 +88,9 @@ wss.on("connection", function(ws) {
 				}
 			}).catch((err) => {
 				console.log('Error obtener data de :'+obj.idHouse)
-			})
+			})*/
 		}
 	})
-	ws.on("close", function() {
-		console.log("websocket connection close");
-  	})
 })
 /*wss.on("connection", function(ws) {
 	
