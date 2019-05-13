@@ -36,7 +36,7 @@ var dataNueva = setInterval(function() {
 
 }, 60000);
 
-var wss = new WebSocketServer({server: server});
+/*var wss = new WebSocketServer({server: server});
 console.log("websocket server created");
 
 wss.on("connection", function(ws) {
