@@ -81,18 +81,19 @@ wss.on("connection", function(ws) {
 					      	i++;	
 				    	}
 				    	
-				    });*/
+				    });
 				    console.log('Hay Data');
 				    var mensaje = {
 				    	message : 'hay data'/*consumoExtra,
 				    	dateStart : fechaInicio,
-				    	dateEnd : fechaFin*/
+				    	dateEnd : fechaFin
 				    };
-				    ws.send(JSON.stringify(mensaje),function(){});
+				    ws.send(JSON.stringify(mensaje),function(){});*/
 				}
-			}).catch(err => {
-				console.log('Error obtener data',err);
 			})
+			.catch(err => {
+				console.log('Error obtener data',err);
+			});
 		}
 	})
 })
