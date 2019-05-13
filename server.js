@@ -82,6 +82,7 @@ wss.on("connection", function(ws) {
 				    	}
 				    	
 				    });*/
+				    console.log('Hay Data');
 				    var mensaje = {
 				    	message : 'hay data'/*consumoExtra,
 				    	dateStart : fechaInicio,
@@ -89,8 +90,8 @@ wss.on("connection", function(ws) {
 				    };
 				    ws.send(JSON.stringify(mensaje),function(){});
 				}
-			}).catch((err) => {
-				console.log('Error obtener data de :'+obj.idHouse)
+			}).catch(err => {
+				console.log('Error obtener data',err);
 			})
 		}
 	})
