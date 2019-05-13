@@ -36,12 +36,12 @@ var dataNueva = setInterval(function() {
 
 }, 60000);
 
-/*var wss = new WebSocketServer({server: server});
+var wss = new WebSocketServer({server: server});
 console.log("websocket server created");
-
+/*
 wss.on("connection", function(ws) {
 	console.log("connection ...");
-	ws.on('message', function incoming(message) {
+	ws.on('message', function(message) {
 		var obj = JSON.parse(message);
 		switch(obj.consulta){
 			case 'consumoExtra':{
