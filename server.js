@@ -49,7 +49,10 @@ wss.on("connection", function(ws) {
 		console.log(obj);
 		ws.send(JSON.stringify(obj),function(){});
 		if(obj.consulta=='consumoExtra'){
-			/*db.collection('Consumption').where('IdHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
+			db.collection('Consumption')
+			.where('IdHouse','==', obj.IdHouse) 
+			.orderBy('DateConsumption', 'desc')
+			.get()
 			.then((doc) => {
 				if (doc.empty) {
 					console.log('No matching documents.');
@@ -58,7 +61,7 @@ wss.on("connection", function(ws) {
 					};
 					ws.send(JSON.stringify(mensaje), function() {  });
 				}else{
-				    var hoy = new Date();
+				    /*var hoy = new Date();
 					var consumoExtra = 0;
 					var aux;
 					var objAux;
@@ -78,17 +81,17 @@ wss.on("connection", function(ws) {
 					      	i++;	
 				    	}
 				    	
-				    });
+				    });*/
 				    var mensaje = {
-				    	message : consumoExtra,
+				    	message : 'hay data'/*consumoExtra,
 				    	dateStart : fechaInicio,
-				    	dateEnd : fechaFin
+				    	dateEnd : fechaFin*/
 				    };
 				    ws.send(JSON.stringify(mensaje),function(){});
 				}
 			}).catch((err) => {
 				console.log('Error obtener data de :'+obj.idHouse)
-			})*/
+			})
 		}
 	})
 })
