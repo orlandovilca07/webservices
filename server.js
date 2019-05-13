@@ -44,7 +44,7 @@ wss.on("connection", function(ws) {
 	ws.on('message', function(message) {
 		var obj = JSON.parse(message);
 		console.log(obj);
-		/*switch(obj.consulta){
+		switch(obj.consulta){
 			case 'consumoExtra':{
 				db.collection('Consumption').doc().where('idHouse','==', obj.IdHouse) .orderBy('DateConsumption', 'desc').get()
 				.then((doc) => {
@@ -88,7 +88,7 @@ wss.on("connection", function(ws) {
 				})
 				break;
 			}
-		}*/
+		}
 	})
 	ws.on("close", function() {
 		console.log("websocket connection close");
