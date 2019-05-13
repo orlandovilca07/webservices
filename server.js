@@ -53,7 +53,7 @@ wss.on("connection", function(ws) {
 			.where('IdHouse','==', obj.IdHouse) 
 			.orderBy('DateConsumption', 'desc')
 			.get()
-			.then((doc) => {
+			.then(doc => {
 				if (doc.empty) {
 					console.log('No matching documents.');
 					var mensaje = {
