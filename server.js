@@ -62,6 +62,7 @@ wss.on("connection", function(ws) {
 					ws.send(JSON.stringify(mensaje), function() {  });
 				}else{
 				    var hoy = new Date();
+				    var dateAux;
 				    var consumoExtra = 0;
 				    var aux;
 				    var objAux;
@@ -70,11 +71,10 @@ wss.on("connection", function(ws) {
 				    var i=0;
 				    doc.forEach(data => {
 				    	objAux = data.data();
-					console.log(objAux);
-					console.log(new Date(objAux.DateConsumption._seconds*1000));
-				    	if((objAux.DateConsumption.getMonth()+1)+'/'+objAux.DateConsumption.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
+					dateAux = new Date(objAux.DateConsumption._seconds*1000);
+				    	if((dateAux.getMonth()+1)+'/'+dateAux.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
 				    		if(i==0){
-					    		fechaFin = String(objAux.DateConsumption.getDate()).padStart(2,'0')+String((objAux.DateConsumption.getMonth()+1)).padStart(2,'0')+'/'+objAux.DateConsumption.getFullYear();
+					    		fechaFin = String(dateAux.getDate()).padStart(2,'0')+String((dateAux.getMonth()+1)).padStart(2,'0')+'/'+dateAux.getFullYear();
 					    	}
 					    	aux += objAux.PatternConsumption - objAux.QuantityHouse;
 					      	if(aux>3){
