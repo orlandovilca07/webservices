@@ -18,8 +18,8 @@ const db = new Firestore({
   keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 });
 var dataNueva = setInterval(function() {
-	var variacion = (1|-1)*Math.floor(Math.random() * 5)
-	var consumo = Math.floor(Math.random() * 51);
+	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 5)
+	var consumo = Math.floor(Math.random() * 51)+5;
 	var time = new Date();
 	var data = {
 		DateConsumption: time,
@@ -68,26 +68,27 @@ wss.on("connection", function(ws) {
 				    var objAux;
 				    var fechaInicio = '01/'+String(hoy.getMonth()+1).padStart(2,'0')+'/'+hoy.getFullYear();
 				    var fechaFin;
-				    var i=0;
+				    var totalReal = 0;
+				    var totalPatron = 0;
 				    doc.forEach(data => {
 				    	objAux = data.data();
 					dateAux = new Date(objAux.DateConsumption._seconds*1000);
 				    	if((dateAux.getMonth()+1)+'/'+dateAux.getFullYear() == (hoy.getMonth()+1)+'/'+hoy.getFullYear()){
-				    		if(i==0){
-					    		fechaFin = String(dateAux.getDate()).padStart(2,'0')+'/'+String((dateAux.getMonth()+1)).padStart(2,'0')+'/'+dateAux.getFullYear();
-					    	}
-					    	aux = objAux.PatternConsumption - objAux.QuantityHouse;
+					    	totalReal += objAux.QuantityHouse;
+						totalPatron += objAux.PatternConsumption;
+						aux = objAux.PatternConsumption - objAux.QuantityHouse;
 					      	if(aux>3){
 							consumoExtra+=aux;
-						}
-					      	i++;	
+						}	
 				    	}
 				    	
 				    });
 				    var mensaje = {
 				    	message : consumoExtra,
 				    	dateStart : fechaInicio,
-				    	dateEnd : fechaFin
+				    	dateEnd : String(hoy.getDate()).padStart(2,'0')+'/'+String((hoy.getMonth()+1)).padStart(2,'0')+'/'+hoy.getFullYear(),
+					real : totalReal,
+					patron : totalPatron    
 				    };
 				    ws.send(JSON.stringify(mensaje),function(){});
 				}
