@@ -19,7 +19,7 @@ const db = new Firestore({
 });
 var dataNueva = setInterval(function() {
 	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 5)
-	var consumo = Math.floor(Math.random() * 51)+5;
+	var consumo = Math.floor(Math.random() * 51)+10;
 	var time = new Date();
 	var data = {
 		DateConsumption: time,
