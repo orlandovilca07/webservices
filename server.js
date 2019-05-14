@@ -18,7 +18,7 @@ const db = new Firestore({
   keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 });
 var dataNueva = setInterval(function() {
-	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 5)
+	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 3)
 	var consumo = Math.floor(Math.random() *11)+7;
 	var time = new Date();
 	var data = {
