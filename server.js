@@ -21,15 +21,30 @@ var dataNueva = setInterval(function() {
 	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 3)
 	var consumo = Math.floor(Math.random() *11)+7;
 	var time = new Date();
-	var data = {
+	var data1 = {
 		DateConsumption: time,
 		IdHouse: "2001",
 		PatternConsumption: consumo,
 		QuantityHouse: consumo+variacion
 	};
-	var setDoc = db.collection('Consumption').add(data).then(ref=>{console.log('Nuevo Data')});
+	var setDoc = db.collection('Consumption').add(data1).then(ref=>{console.log('Nuevo Data 1')});
 	var consumoActual = db.collection('ConsumptionNow').doc('2001');
 	var update = consumoActual.update({
+		DateConsumption: time,
+		QuantityConsumption: consumo
+	});
+	
+	variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 3)
+	consumo = Math.floor(Math.random() *11)+7;
+	var data2 = {
+		DateConsumption: time,
+		IdHouse: "2002",
+		PatternConsumption: consumo,
+		QuantityHouse: consumo+variacion
+	};
+	setDoc = db.collection('Consumption').add(data2).then(ref=>{console.log('Nuevo Data 2')});
+	consumoActual = db.collection('ConsumptionNow').doc('2002');
+	update = consumoActual.update({
 		DateConsumption: time,
 		QuantityConsumption: consumo
 	});
