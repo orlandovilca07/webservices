@@ -17,7 +17,7 @@ const db = new Firestore({
   projectId: 'corded-racer-239721',
   keyFilename: 'Tesis Electricidad-82be67ea28a5.json',
 });
-var dataNueva = setInterval(function() {
+/*var dataNueva = setInterval(function() {
 	var variacion =  (Math.random() < 0.5 ? -1 : 1)*Math.floor(Math.random() * 3)
 	var consumo = Math.floor(Math.random() *11)+7;
 	var time = new Date();
@@ -49,7 +49,7 @@ var dataNueva = setInterval(function() {
 		QuantityConsumption: consumo
 	});
 
-}, 60000);
+}, 60000);*/
 
 var wss = new WebSocketServer({server: server});
 console.log("websocket server created");
